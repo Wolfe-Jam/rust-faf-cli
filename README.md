@@ -6,6 +6,8 @@
 
 Score any project's AI context quality. See exactly why. Fix it automatically.
 
+> This is the **Rust-native** edition. See also [faf-cli](https://www.npmjs.com/package/faf-cli) (TypeScript, npm).
+
 ## Install
 
 **Homebrew (macOS/Linux):**
@@ -16,19 +18,24 @@ brew install Wolfe-Jam/faf/rust-faf-cli
 **Direct download:**
 ```bash
 # macOS ARM (Apple Silicon)
-curl -L https://github.com/Wolfe-Jam/rust-faf-cli/releases/latest/download/faf-1.1.0-aarch64-apple-darwin.tar.gz | tar xz
+curl -L https://github.com/Wolfe-Jam/rust-faf-cli/releases/latest/download/faf-aarch64-apple-darwin.tar.gz | tar xz
 sudo mv faf /usr/local/bin/
 
 # macOS Intel
-curl -L https://github.com/Wolfe-Jam/rust-faf-cli/releases/latest/download/faf-1.1.0-x86_64-apple-darwin.tar.gz | tar xz
+curl -L https://github.com/Wolfe-Jam/rust-faf-cli/releases/latest/download/faf-x86_64-apple-darwin.tar.gz | tar xz
 sudo mv faf /usr/local/bin/
 
 # Linux x86_64
-curl -L https://github.com/Wolfe-Jam/rust-faf-cli/releases/latest/download/faf-1.1.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
+curl -L https://github.com/Wolfe-Jam/rust-faf-cli/releases/latest/download/faf-x86_64-unknown-linux-gnu.tar.gz | tar xz
 sudo mv faf /usr/local/bin/
 ```
 
-**Windows:** Download `faf-1.1.0-x86_64-pc-windows-msvc.zip` from [Releases](https://github.com/Wolfe-Jam/rust-faf-cli/releases).
+**Windows (PowerShell):**
+```powershell
+Invoke-WebRequest -Uri "https://github.com/Wolfe-Jam/rust-faf-cli/releases/latest/download/faf-x86_64-pc-windows-msvc.zip" -OutFile faf.zip
+Expand-Archive faf.zip -DestinationPath .
+Move-Item faf.exe "$env:LOCALAPPDATA\Microsoft\WindowsApps\"
+```
 
 ## What It Does
 
@@ -113,6 +120,18 @@ IANA registered: `application/vnd.faf+yaml`
 - [faf-cli](https://www.npmjs.com/package/faf-cli) — TypeScript CLI (npm)
 - [claude-faf-mcp](https://www.npmjs.com/package/claude-faf-mcp) — Claude MCP server
 - [All packages](https://faf.one/links) — Full ecosystem directory
+
+## Changelog
+
+### v1.1.0 (2026-03-05)
+- Dual identity: `xai-faf` (xAI edition) + `faf` (universal edition) from one codebase
+- Glass Hood scoring with 4-category weighted analysis
+- Multi-target sync: GROK.md, CLAUDE.md, GEMINI.md
+- Score card SVG generation (`--card`)
+- Machine-readable JSON output (`--json`)
+- DRS auto-fix suggestions (ONE thing to improve)
+- FAFb binary compilation (288x faster than YAML)
+- Cross-platform binaries: macOS ARM/Intel, Linux, Windows
 
 ## License
 
